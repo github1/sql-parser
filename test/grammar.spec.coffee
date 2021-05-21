@@ -14,6 +14,12 @@ describe "SQL Grammar", ->
         ORDER BY `x` DESC
       """
 
+    it "parsers SELECT with square brackets", ->
+      parse("SELECT foo.[the foo] FROM foo").toString().should.eql """
+      SELECT `foo.the foo`
+        FROM `foo`
+      """
+
     it "parses ORDER BY clauses with OFFSET n ROWS", ->
       parse("SELECT * FROM my_table ORDER BY x DESC OFFSET 10 ROWS").toString().should.eql """
       SELECT *

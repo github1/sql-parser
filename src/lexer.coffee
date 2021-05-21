@@ -25,6 +25,7 @@ class Lexer
                        @parameterToken() or
                        @parensToken() or
                        @whitespaceToken() or
+                       @literalTokenSquareBracket() or
                        @literalToken()
       throw new Error("NOTHING CONSUMED: Stopped at - '#{@chunk.slice(0,30)}'") if bytesConsumed < 1
       i += bytesConsumed
@@ -108,6 +109,7 @@ class Lexer
 
   starToken:        -> @tokenizeFromRegex('STAR', STAR)
   seperatorToken:   -> @tokenizeFromRegex('SEPARATOR', SEPARATOR)
+  literalTokenSquareBracket: -> @tokenizeFromRegex('LITERAL', LITERAL_SQUARE_BRACKET, 1, 0)
   literalToken:     -> @tokenizeFromRegex('LITERAL', LITERAL, 1, 0)
   numberToken:      -> @tokenizeFromRegex('NUMBER', NUMBER)
   parameterToken:   -> @tokenizeFromRegex('PARAMETER', PARAMETER)
@@ -151,6 +153,7 @@ class Lexer
   STAR                = /^\*/
   SEPARATOR           = /^,/
   WHITESPACE          = /^[ \n\r]+/
+  LITERAL_SQUARE_BRACKET = /^\[([^\]]+)\]/i
   LITERAL             = /^`?([a-z_][a-z0-9_]{0,})`?/i
   PARAMETER           = /^\$[0-9]+/
   NUMBER              = /^[0-9]+(\.[0-9]+)?/
