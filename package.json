@@ -1,6 +1,6 @@
 {
-  "name": "sql-parser",
-  "description": "Lexer and Parser for SQL Syntax",
+  "name": "@github1/sql-parser",
+  "description": "Fork of sql-parser - Lexer and Parser for SQL Syntax",
   "version": "0.5.0",
   "scripts": {
     "test": "./node_modules/.bin/cake build && ./node_modules/.bin/mocha --require should --compilers coffee:coffee-script/register"
@@ -24,6 +24,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "http://github.com/forward/sql-parser.git"
+    "url": "http://github.com/github1/sql-parser.git"
   }
 }
